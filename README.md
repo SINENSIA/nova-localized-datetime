@@ -49,7 +49,7 @@ use Sinensia\Localizeddatetime\LocalizeddateTime;
 public function fields(NovaRequest $request)
 {
     return [
-        LocalizeddateTime::make('Fecha Inicio')
+        Localizeddatetime::make('Fecha Inicio')
             ->withMeta([
                 'locale' => auth()->user()->locale, // You can use the authenticated user locale
                 'firstDayOfWeek' => 1,  // Monday
