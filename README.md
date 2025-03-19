@@ -39,25 +39,17 @@ sudo systemctl restart apache2  # For Apache users
 sudo systemctl restart php-fpm  # For Nginx with PHP-FPM
 ```
 
-### 3️⃣ Install JavaScript Dependencies
-Once the PHP dependencies are confirmed, install the JavaScript dependencies for the Nova component:
-
-```bash
-cd nova-components/Localizeddatetime
-npm install && npm run build
-```
-
 ## 🛠️ Usage
 
 In your **Nova Resource**:
 
 ```php
-use Sinensia\Localizeddatetime\LocalizedDateTime;
+use Sinensia\Localizeddatetime\LocalizeddateTime;
 
 public function fields(NovaRequest $request)
 {
     return [
-        LocalizedDateTime::make('Fecha Inicio')
+        LocalizeddateTime::make('Fecha Inicio')
             ->withMeta([
                 'locale' => auth()->user()->locale, // You can use the authenticated user locale
                 'firstDayOfWeek' => 1,  // Monday
