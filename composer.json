@@ -1,6 +1,6 @@
 {
     "name": "sinensia/localizeddatetime",
-    "description": "A Laravel Nova field.",
+    "description": "A custom DateTime field for Laravel Nova 4 with localization support.",
     "keywords": [
         "laravel",
         "nova",
