@@ -12,10 +12,31 @@ This package extends **VueDatePicker** to provide a flexible and user-friendly *
 composer require sinensia/localizeddatetime
 ```
 
-**Step 2:** Install dependencies:
+
+## Step 2: Install Dependencies
+
+Before installing the package, ensure your system has the required PHP extensions **bcmath** and **zip**.
+
+### 1️⃣ Install Required PHP Extensions
+For **Ubuntu/Debian** users, run:
+
 ```bash
-cd nova-components/Localizeddatetime
-npm install && npm run build
+sudo apt update
+sudo apt install php-bcmath php-zip -y
+```
+
+### 2️⃣ Verify That Extensions Are Enabled
+Check if the extensions are active (for example, in Apache):
+
+```bash
+php -m | grep -E "bcmath|zip"
+```
+
+If any extension is missing, you may need to restart PHP:
+
+```bash
+sudo systemctl restart apache2  # For Apache users
+sudo systemctl restart php-fpm  # For Nginx with PHP-FPM
 ```
 
 ## 🛠️ Usage
@@ -23,12 +44,12 @@ npm install && npm run build
 In your **Nova Resource**:
 
 ```php
-use Sinensia\Localizeddatetime\LocalizedDateTime;
+use Sinensia\Localizeddatetime\LocalizeddateTime;
 
 public function fields(NovaRequest $request)
 {
     return [
-        LocalizedDateTime::make('Fecha Inicio')
+        Localizeddatetime::make('Fecha Inicio')
             ->withMeta([
                 'locale' => auth()->user()->locale, // You can use the authenticated user locale
                 'firstDayOfWeek' => 1,  // Monday
