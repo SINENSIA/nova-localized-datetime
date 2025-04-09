@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import { FormField, HandlesValidationErrors } from "laravel-nova";
 import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import {
@@ -42,7 +41,16 @@ import {
 } from "date-fns";
 
 export default {
-  mixins: [FormField, HandlesValidationErrors],
+  mixins:
+    typeof FormField !== "undefined" &&
+    typeof HandlesValidationErrors !== "undefined"
+      ? [FormField, HandlesValidationErrors]
+      : [],
+  mounted() {
+    if (typeof FormField === "undefined") {
+      console.warn("Nova FormField mixin is not available in this context.");
+    }
+  },
 
   components: {
     VueDatePicker,
